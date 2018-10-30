@@ -7,11 +7,26 @@ import InfoOrder from './pages/info-order'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
+
+  state = {
+    isOnBuyNow: false
+  }
+
+  onBuyNow = () => {
+    this.setState({
+      isOnBuyNow: true
+    })
+  }
+
   render() {
     return (
       <div className="App">
-        <Home />
-        {/* <InfoOrder /> */}
+        {
+          this.state.isOnBuyNow ?
+            <InfoOrder /> :
+            <Home onBuyNow={this.onBuyNow} />
+
+        }
       </div>
     );
   }

@@ -22,16 +22,16 @@ export default class Home extends React.Component {
         { url: imgUrl, content: 'content 4' }
     ]
 
-
     render() {
 
         return (
             <div>
                 <Header></Header>
-
-                <Product />
-
-
+                <br /><br />
+                <Product onBuyNow={this.props.onBuyNow}/>
+                <br /><br />
+                <span style={{width: '200px', margin: 'auto', border: '1px solid #333', display: 'block'}} ></span>
+                <br /><br />
                 <List
                     itemSource={this.data}
                     renderRows={(e, index) => (
@@ -41,7 +41,7 @@ export default class Home extends React.Component {
                 />
 
                 <br />
-                <hr style={{width: '200px', margin: 'auto'}} />
+                <span style={{width: '200px', margin: 'auto', border: '1px solid #333', display: 'block'}} ></span>
                 <br />
 
                 <h3>Review</h3>

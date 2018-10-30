@@ -3,6 +3,8 @@
 	padding: 0;
 	margin: 0;
 	font-size: 18px;
+	font-family: 'Roboto', sans-serif;
+	color: #666;
 }
 div {
 	width: 100%;
@@ -17,7 +19,7 @@ button:hover {
 
 /*		Ifomation order 	*/
 .d-if-order {
-	width: 100%;
+	margin: 0 auto;
 	text-align: center;
 	padding: 100px;
 }
@@ -35,13 +37,13 @@ button:hover {
 	}
 	.d-input-order label {
 		width: 40%;
-		margin-right: 20px;
+		margin-right: 90px;
 	}
 	.d-input-order input {
-		width: 300px;
+		width: 350px;
 		border: 1px solid;
-		height: 25px;
-		line-height: 25px;
+		height: 30px;
+		line-height: 30px;
 		text-align: left;
 		padding: 0 5px;
 		display: inline-block;
@@ -50,6 +52,7 @@ button:hover {
 	.d-product {
 		display: table;
 		padding: 20px;
+		padding-left: 40px;
 		text-align: center;
 	}
 	/*		image product		*/
@@ -110,4 +113,42 @@ button:hover {
 		width: 100px;
 		height: 30px;
 		line-height: 30px;
+	}
+
+	/*		Popup Sucess	*/
+	.d-popup {
+		position: fixed;
+		background-color: #ccc;
+		margin:auto;
+		width: 35%;
+		top: 20%;
+		left: 0;
+		right: 0;
+		padding: 30px;
+		text-align: center;
+		display: none;
+		z-index: 999;
+		border: 1px solid #333;
+	}
+	.d-popup p {
+		font-size: 26px;
+		font-weight: 600;
+		margin-bottom: 25px;
+	}
+	.d-popup > span {
+		font-size: 16px;
+		display: block;
+		margin-bottom: 25px;
+	}
+	.d-btn-check {
+		display: inline-block !important; 
+	}
+	.d-btn-check:hover {
+		cursor: pointer;
+	}
+	.d-btn-check i {
+		font-size: 45px;
+		display: block;
+		color: #333;
+		font-weight: 600;
 	}
