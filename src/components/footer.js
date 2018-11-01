@@ -1,14 +1,17 @@
 import React from 'react';
-import url from '../assets/Logo.png'
+import urlLogo from '../assets/Logo.png';
 
 const Footer = () => {
     return (
-        <footer>
-            <img src={url} alr="footer" width="200px"/>
-            <br /><br />
-            <p>Numero Viet Nam | Copyright@2018 | All Rights Reserved</p>
-            <p>Privacy Policy - Terms condition - Disclaimer</p>
-        </footer>
+		<footer>
+			<div className="footer-img">
+				<img src={urlLogo} alt=""/>
+			</div>
+			<div className="footer-info">
+				<p>Numero Viet Nam | Copyright2018 | All Rights Reserved</p>
+				<span>Privacy Policy - Term & Conditionals - Disclaimer</span>
+			</div>
+		</footer>
     )
 }
 export default Footer;

@@ -1,62 +1,74 @@
 import React from 'react';
 import Header from '../components/header';
-import Benefit from '../components/benefit';
-import Review from '../components/review';
+import ProductIngredient from '../components/product-ingredient';
+import ReviewRow from '../components/review-row';
 import Footer from '../components/footer';
-import imgUrl from '../assets/pic_trulli.jpg'
 import List from '../components/list';
 import Product from '../components/product';
+import urlIngredient1 from '../assets/ingredient1.png';
+import urlIngredient2 from '../assets/ingredient2.png';
+import urlIngredient3 from '../assets/ingredient3.png';
+import urlCustomer1 from '../assets/client1.png';
+import urlCustomer2 from '../assets/client2.png';
+import urlCustomer3 from '../assets/client3.png';
+import urlCustomer4 from '../assets/client4.png';
+import urlCustomer5 from '../assets/client5.png';
+import urlCustomer6 from '../assets/client6.png';
+import urlVote1 from '../assets/review_1-09.jpg';
+import urlVote2 from '../assets/review_2-09.jpg';
+import urlVote3 from '../assets/review_3-09.jpg';
+import urlVote4 from '../assets/review_4-09.jpg';
+import urlVote5 from '../assets/review_5-09.jpg';
 
 
 export default class Home extends React.Component {
 
-    data = [
-        { url: imgUrl, caption: 'benefit 1', content: 'img 1' },
-        { url: imgUrl, caption: 'benefit 2', content: 'img 2' },
-        { url: imgUrl, caption: 'benefit 3', content: 'img 3' }
+    dataProductIngredient = [
+        { url: urlIngredient1, content: 'Chứa hơn 20 loại vitamin. Mang lại sức sống cho dôi mắt mệt mỏi' },
+        { url: urlIngredient2, content: 'làm sạch và săn chắc da, đẩy mạnh quá trình tẩy, tết bào chết. Hạn chế tích trữ độc tố, duy trì làn da khỏe mạnh' },
+        { url: urlIngredient3, content: 'Giữ ấm và làm sạch da, thanh lọc độc tố. Vitamin K giúp cải thiện sắc tố da hồng hào' }
     ]
     dataReview = [
-        { url: imgUrl, content: 'content 1' },
-        { url: imgUrl, content: 'content 2' },
-        { url: imgUrl, content: 'content 3' },
-        { url: imgUrl, content: 'content 4' }
+        { urlCustomer: urlCustomer1, content: 'Mặt này có nhiều tinh chất lắm luôn. Có các điểm mát xa trên mặt rất hay.', urlVote: urlVote1 },
+        { urlCustomer: urlCustomer2, content: 'Mặt này có nhiều tinh chất lắm luôn. Có các điểm mát xa trên mặt rất hay.', urlVote: urlVote2 },
+        { urlCustomer: urlCustomer3, content: 'Mặt này có nhiều tinh chất lắm luôn. Có các điểm mát xa trên mặt rất hay.', urlVote: urlVote3 },
+        { urlCustomer: urlCustomer4, content: 'Mặt này có nhiều tinh chất lắm luôn. Có các điểm mát xa trên mặt rất hay.', urlVote: urlVote4 },
+        { urlCustomer: urlCustomer5, content: 'Mặt này có nhiều tinh chất lắm luôn. Có các điểm mát xa trên mặt rất hay.', urlVote: urlVote5 },
+        { urlCustomer: urlCustomer6, content: 'Mặt này có nhiều tinh chất lắm luôn. Có các điểm mát xa trên mặt rất hay.', urlVote: urlVote5 }
     ]
 
     render() {
-
         return (
             <div>
                 <Header></Header>
-                <br /><br />
-                <Product onBuyNow={this.props.onBuyNow}/>
-                <br /><br />
-                <span style={{width: '200px', margin: 'auto', border: '1px solid #333', display: 'block'}} ></span>
-                <br /><br />
-                <List
-                    itemSource={this.data}
-                    renderRows={(e, index) => (
-                        <Benefit key={index} url={e.url} caption={e.caption} content={e.content} />
-                    )}
-                    style={{ flexDirection: 'row' }}
-                />
+                <Product />
+                <section class="ingredient">
+                    {
+                        this.dataProductIngredient.map(item => (
+                            <ProductIngredient
+                                urlIngredient={item.url}
+                                content={item.content}
+                            />
+                        ))
+                    }
+                </section>
 
-                <br />
-                <span style={{width: '200px', margin: 'auto', border: '1px solid #333', display: 'block'}} ></span>
-                <br />
-
-                <h3>Review</h3>
-                <List
-                    itemSource={this.dataReview}
-                    renderRows={(e, index, array) => (
-                        index % 2 == 0 ?
-                            <div key={index} >
-                                <Review url={array[index].url} content={array[index].content} />
-                                <Review url={array[index + 1].url} content={array[index + 1].content} />
-                            </div>
-                            : null
-                    )}
-                    style={{ flexDirection: 'row' }}
-                />
+                <section className="review">
+                    <div className="header-review">
+                        <span></span>
+                        <h3>Review</h3>
+                    </div>
+                    <div class="contain-review">
+                        {
+                            this.dataReview.map((item, index, array) => {
+                                if (index % 2 === 0) {
+                                    return <ReviewRow data={[array[index], array[index + 1]]} />
+                                }
+                            })
+                        }
+                    </div>
+                </section>
+                
                 <Footer></Footer>
             </div>
         )

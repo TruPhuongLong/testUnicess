@@ -1,7 +1,6 @@
 import React from 'react';
-import ProductDescription from './product-description';
-import ProductImage from './product-image';
 import ProductDetail from './product-detail';
+import urlImgDes from '../assets/img-des.jpg'
 
 
 class Product extends React.Component {
@@ -24,20 +23,37 @@ class Product extends React.Component {
 
     render() {
         return (
-            <div>
-                <div className="row">
-                    <div className="col-sm-6">
-                        <ProductDescription {...this.props} onDetail={this.onDetail} showDetail={this.state.showDetail}/>
+            <section>
+                <section className="product">
+                    {/* Thong Tin San Pham Start */}
+                    <div className="product-info">
+                        <div className="header-info">
+                            <p>Mặt nạ</p>
+                            <h3>Numero 5. Vital Mask Pack</h3>
+                            <span></span>
+                        </div>
+                        <div className="contain-info">
+                            <p>Chiếc mặt nạ đáp ứng nhu cầu chăm sóc da hằng ngày cho phụ nữ hiện đại. <br />Chỉ với 5 phút massgae - 5 điểm nhấn trên mặt nạ cùng Numero 5 sẽ mang lại hiệu quả tuyệt vời.</p>
+                        </div>
+                        <div className="btn-info">
+                            <button type="button" name="viewmore" id="viewmore" style={{ backgroundColor: '#d8d8d8' }}>xem thêm</button>
+                            <button type="button" name="product" id="product" style={{ backgroundColor: '#ffe72c' }}>sản phẩm</button>
+                        </div>
                     </div>
-                    <div className="col-sm-6">
-                        <ProductImage />
+                    {/* Thong Tin San Pham End */}
+
+                    {/* <!-- Hinh Anh San Pham --> */}
+                    <div className="product-img">
+                        <div className="around-img">
+                            <img src={urlImgDes} alt="" />
+                        </div>
                     </div>
-                </div>
-                {
-                    this.state.showDetail ? <ProductDetail {...this.props} onShrink={this.onShrink}/> : null
-                }
-                
-            </div>
+                    {/* <!-- Hinh Anh San Pham End --> */}
+                </section>
+
+                {/* product detail */}
+                <ProductDetail />
+            </section>
         )
     }
 
