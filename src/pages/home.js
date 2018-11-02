@@ -1,9 +1,6 @@
 import React from 'react';
-import Header from '../components/header';
 import ProductIngredient from '../components/product-ingredient';
 import ReviewRow from '../components/review-row';
-import Footer from '../components/footer';
-import List from '../components/list';
 import Product from '../components/product';
 import urlIngredient1 from '../assets/ingredient1.png';
 import urlIngredient2 from '../assets/ingredient2.png';
@@ -37,16 +34,10 @@ export default class Home extends React.Component {
         { urlCustomer: urlCustomer6, content: 'Mặt này có nhiều tinh chất lắm luôn. Có các điểm mát xa trên mặt rất hay.', urlVote: urlVote5 }
     ]
 
-    onBuyNow = () => {
-        console.log('on buy now')
-        this.props.history.push('/order')
-    }
-
     render() {
         return (
             <div>
-                <Header></Header>
-                <Product onBuyNow={this.onBuyNow}/>
+                <Product />
                 <section class="ingredient">
                     {
                         this.dataProductIngredient.map(item => (
@@ -73,8 +64,6 @@ export default class Home extends React.Component {
                         }
                     </div>
                 </section>
-                
-                <Footer></Footer>
             </div>
         )
     }

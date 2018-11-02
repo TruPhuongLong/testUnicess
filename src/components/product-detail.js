@@ -1,7 +1,9 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+
 import urlIngredient1 from '../assets/ingredient1.png';
 
-const ProductDetail = ({onBuyNow = f => f, onShrink = f => f}) => {
+const ProductDetail = ({ onShrink = f => f }) => {
     return (
         // <!-- View More id="hide"-->
 		<section>
@@ -13,8 +15,8 @@ const ProductDetail = ({onBuyNow = f => f, onShrink = f => f}) => {
 				<div className="description-video">
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis quos dolore doloremque exercitationem accusamus sit dignissimos minima cumque magnam omnis.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis quos dolore doloremque exercitationem accusamus sit dignissimos minima cumque magnam omnis. Suscipit magni odit saepe natus debitis sint distinctio similique velit.</p>
 					<div className="btn-viewmore">
-						<button type="button" style={{backgroundColor: '#d8d8d8'}} id="hide-off">Ẩn Bớt</button>
-						<button type="button" style={{backgroundColor: '#ffe72c'}}>Sản Phẩm</button>
+						<button onClick={onShrink} style={{backgroundColor: '#d8d8d8'}} id="hide-off">Ẩn Bớt</button>
+						<Link to="/order"><button style={{backgroundColor: '#ffe72c'}}>Sản Phẩm</button></Link>
 					</div>
 				</div>
 			</div>

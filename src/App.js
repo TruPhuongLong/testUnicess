@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+
 import Routes from './router';
+import Header from './components/header';
+import Footer from './components/footer';
 
 class App extends Component {
-
-
   render() {
     return (
       <div className="App">
+        <Header />
         <Routes />
+        <Footer />
       </div>
     );
   }

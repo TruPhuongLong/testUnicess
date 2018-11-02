@@ -1,4 +1,6 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+
 import urlLogo from '../assets/Logo.png'
 import urlLogoOfficial from '../assets/LogoOfficial.jpg';
 import urlShopping from '../assets/shopping-bag.svg';
@@ -9,7 +11,7 @@ const Header = () => {
         <header>
 			<div className="header-wp">
 				<div className="logo-deal">
-					<img src={urlLogoOfficial} alt=""/>
+					<Link to="/"><img src={urlLogoOfficial} alt=""/></Link>
 				</div>
 				<div className="logo">
 					<img src={urlLogo} alt=""/>

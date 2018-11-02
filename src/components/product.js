@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import {Link} from 'react-router-dom';
 
 import ProductDetail from './product-detail';
 import urlImgDes from '../assets/img-des.jpg';
@@ -40,7 +41,7 @@ class Product extends React.Component {
                         </div>
                         <div className="btn-info" style={{ backgroundColor: 'transparent' }}>
                             <button onClick={this.onDetail} style={{ backgroundColor: '#d8d8d8' }}>xem thêm</button>
-                            <button onClick={this.props.onBuyNow} style={{ backgroundColor: '#ffe72c' }}>sản phẩm</button>
+                            <Link to="/order"><button style={{ backgroundColor: '#ffe72c' }}>sản phẩm</button></Link>
                         </div>
                     </div>
                     {/* Thong Tin San Pham End */}
@@ -58,14 +59,9 @@ class Product extends React.Component {
 
                 {
 
-                    <ReactCSSTransitionGroup
-                        transitionName="carousel"
-                        transitionEnterTimeout={3000}
-                        transitionLeaveTimeout={3000}>
-
-
+                    <ReactCSSTransitionGroup transitionName="example">
                         {
-                            this.state.showDetail ? <ProductDetail /> : null
+                            this.state.showDetail ? <ProductDetail onShrink={this.onShrink}/> : null
                         }
                     </ReactCSSTransitionGroup>
 
