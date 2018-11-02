@@ -1,24 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
-import Home from './pages/home'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Routes from './router';
 
 class App extends Component {
 
-  state = {
-    isOnBuyNow: false
-  }
-
-  onBuyNow = () => {
-    this.setState({
-      isOnBuyNow: true
-    })
-  }
 
   render() {
     return (
       <div className="App">
-        <Home onBuyNow={this.onBuyNow} />
+        <Routes />
       </div>
     );
   }

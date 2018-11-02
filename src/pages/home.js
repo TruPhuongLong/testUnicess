@@ -37,11 +37,16 @@ export default class Home extends React.Component {
         { urlCustomer: urlCustomer6, content: 'Mặt này có nhiều tinh chất lắm luôn. Có các điểm mát xa trên mặt rất hay.', urlVote: urlVote5 }
     ]
 
+    onBuyNow = () => {
+        console.log('on buy now')
+        this.props.history.push('/order')
+    }
+
     render() {
         return (
             <div>
                 <Header></Header>
-                <Product />
+                <Product onBuyNow={this.onBuyNow}/>
                 <section class="ingredient">
                     {
                         this.dataProductIngredient.map(item => (

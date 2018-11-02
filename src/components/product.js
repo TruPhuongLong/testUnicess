@@ -1,6 +1,9 @@
 import React from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 import ProductDetail from './product-detail';
-import urlImgDes from '../assets/img-des.jpg'
+import urlImgDes from '../assets/img-des.jpg';
+
 
 
 class Product extends React.Component {
@@ -35,9 +38,9 @@ class Product extends React.Component {
                         <div className="contain-info">
                             <p>Chiếc mặt nạ đáp ứng nhu cầu chăm sóc da hằng ngày cho phụ nữ hiện đại. <br />Chỉ với 5 phút massgae - 5 điểm nhấn trên mặt nạ cùng Numero 5 sẽ mang lại hiệu quả tuyệt vời.</p>
                         </div>
-                        <div className="btn-info">
-                            <button type="button" name="viewmore" id="viewmore" style={{ backgroundColor: '#d8d8d8' }}>xem thêm</button>
-                            <button type="button" name="product" id="product" style={{ backgroundColor: '#ffe72c' }}>sản phẩm</button>
+                        <div className="btn-info" style={{ backgroundColor: 'transparent' }}>
+                            <button onClick={this.onDetail} style={{ backgroundColor: '#d8d8d8' }}>xem thêm</button>
+                            <button onClick={this.props.onBuyNow} style={{ backgroundColor: '#ffe72c' }}>sản phẩm</button>
                         </div>
                     </div>
                     {/* Thong Tin San Pham End */}
@@ -52,7 +55,23 @@ class Product extends React.Component {
                 </section>
 
                 {/* product detail */}
-                <ProductDetail />
+
+                {
+
+                    <ReactCSSTransitionGroup
+                        transitionName="carousel"
+                        transitionEnterTimeout={3000}
+                        transitionLeaveTimeout={3000}>
+
+
+                        {
+                            this.state.showDetail ? <ProductDetail /> : null
+                        }
+                    </ReactCSSTransitionGroup>
+
+
+                }
+
             </section>
         )
     }
