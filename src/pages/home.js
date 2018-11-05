@@ -45,8 +45,9 @@ class Home extends React.Component {
                 <Product />
                 <section class="ingredient">
                     {
-                        this.dataProductIngredient.map(item => (
+                        this.dataProductIngredient.map((item, index) => (
                             <ProductIngredient
+                                key={index}
                                 urlIngredient={item.url}
                                 content={item.content}
                             />
@@ -63,7 +64,7 @@ class Home extends React.Component {
                         {
                             this.dataReview.map((item, index, array) => {
                                 if (index % 2 === 0) {
-                                    return <ReviewRow data={[array[index], array[index + 1]]} />
+                                    return <ReviewRow key={index} data={[array[index], array[index + 1]]} />
                                 }
                             })
                         }

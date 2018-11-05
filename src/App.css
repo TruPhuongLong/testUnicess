@@ -59,9 +59,9 @@ header {
 	text-align: center;
 }
 .header-wp span {
-	border: 1px solid #acacac;
+	/* border: 1px solid #acacac; */
 	display: inline-block;
-	height: 10px;
+	height: 6px;
 	width: 50%;
 	background-color: #e58e5c;
 	margin-top: 20px;

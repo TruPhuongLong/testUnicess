@@ -52,19 +52,19 @@ class Order extends React.Component {
                             <div className="o-product-howmuch">
                                 <div className="o-price">
                                     <p>Giá bán: </p>
-                                    <input type="text" value="380000đ" className="price" readonly />
+                                    <input type="text" value="380000đ" className="price" readOnly />
                                 </div>
                                 <div className="o-amount">
                                     <p>Số lượng: </p>
                                     <div className="o-choose">
                                         <button type="button" className="clickSub">-</button>
-                                        <input type="text" value="1" className="mount" />
+                                        <input type="text" value="1" className="mount" readOnly/>
                                         <button type="button" className="clickAdd">+</button>
                                     </div>
                                 </div>
                                 <div className="o-price">
                                     <p>Thành tiền: </p>
-                                    <input type="text" value="380000đ" className="total" readonly="" />
+                                    <input type="text" value="380000đ" className="total" readOnly="" />
                                 </div>
                                 <div className="o-name-client">
                                     <p>Khách hàng: </p>
