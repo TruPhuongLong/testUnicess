@@ -1,8 +1,22 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
+import { setCurrentOrderAction } from '../redux/actions/order.action';
+import {OrderModel} from '../models/order.model';
+
 import urlIconCar from '../assets/Icon_Car.png';
 import urlProduct from '../assets/product.jpg'
 
-export default class Order extends React.Component {
+class Order extends React.Component {
+
+
+    buyNow = () => {
+        const newOrder = new OrderModel({});
+        newOrder.user = {name: "long dep trai", email: "longbaloca@gmail.com"}
+        this.props.setCurrentOrderAction(newOrder)
+    }
+
     render() {
         return (
             <div className="order-wr">
@@ -81,7 +95,35 @@ export default class Order extends React.Component {
                 </section>
                 <p className="o-line"></p>
                 {/* <!-- product End --> */}
+
+                <button onClick={this.buyNow}>buy now</button>
             </div>
         )
     }
 }
+
+
+
+const mapStateToProps = (state) => {
+    console.log(state)
+    const { productState } = state;
+    console.log(productState);
+    return {
+        productState
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        setCurrentOrderAction: (model) => {
+            setCurrentOrderAction(model)
+                .then(action => dispatch(action));
+        },
+    }
+}
+
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(withRouter(Order));

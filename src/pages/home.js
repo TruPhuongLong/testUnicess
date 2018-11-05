@@ -39,15 +39,9 @@ class Home extends React.Component {
         { urlCustomer: urlCustomer6, content: 'Mặt này có nhiều tinh chất lắm luôn. Có các điểm mát xa trên mặt rất hay.', urlVote: urlVote5 }
     ]
 
-    inc = () => {
-        this.props.inc();
-    }
-
     render() {
         return (
             <div>
-                <label>{this.props.n}</label>
-                <button onClick={this.inc}>inc</button>
                 <Product />
                 <section class="ingredient">
                     {
@@ -84,24 +78,20 @@ class Home extends React.Component {
 
 
 const mapStateToProps = (state) => {
-    
-    const { n } = state.CountReducer;
-    console.log(n);
+    // console.log(state)
+    // console.log(n);
     return {
-        n
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        inc: () => {
-            dispatch(incAction)
-        },
+        
     }
 }
 
 
 export default connect(
     mapStateToProps,
-    mapDispatchToProps,
+    mapDispatchToProps
 )(withRouter(Home));

@@ -9,7 +9,7 @@ const defaults = {
     createAt: 0,
 }
 
-class OrderModel {
+export class OrderModel {
     constructor (options) {
         this._id = options._id || defaults._id;
         this.listOrder = options.listOrder || defaults.listOrder;
