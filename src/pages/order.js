@@ -12,6 +12,7 @@ class Order extends React.Component {
 
 
     buyNow = () => {
+        console.log('test')
         const newOrder = new OrderModel({});
         newOrder.user = {name: "long dep trai", email: "longbaloca@gmail.com"}
         this.props.setCurrentOrderAction(newOrder)
