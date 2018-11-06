@@ -2,6 +2,8 @@ export const BASE_URL = 'http://localhost:2345/api';
 
 export const URL_ORDER = BASE_URL + '/order';
 
+export const URL_PRODUCT = BASE_URL + '/product';
+
 // //auth url:
 // export const URL_LOGIN = BASE_URL + '/login';
 // export const URL_SIGNUP = BASE_URL + '/signup';
@@ -19,10 +21,10 @@ export const URL_ORDER = BASE_URL + '/order';
 // export const URL_COMMENT = BASE_URL_API + '/comments'
 
 
-// //for upload file:
-// // importance: name files must be the same in multer:
-// // example: array('files') -> fd.append('files', f);
-// export const KEY_FILE_UPLOAD = 'files';
+//for upload file:
+// importance: name files must be the same in multer:
+// example: array('files') -> fd.append('files', f);
+export const KEY_FILE_UPLOAD = 'files';
 
-// //access_token:
-// export const ACCESS_TOKEN = 'access_token';
+//access_token:
+export const ACCESS_TOKEN = 'access_token';

@@ -2,7 +2,7 @@ const defaults = {
     _id: '',
     name: '',
     price: 0,
-    unitPrice: 0,
+    unitPrice: '',
     content: '',
     imageUrls: [],
     createAt: 0,

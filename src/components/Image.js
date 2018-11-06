@@ -1,10 +1,16 @@
 import React from 'react';
 
 export const Image = ({ src, index, remove = f => f }) => {
+
+    const onRemove = (e) => {
+        e.preventDefault();
+        remove(index)
+    }
+
     return (
-        <div style={ column }>
-            <img src={src} alt={index} style={{ objectFit: 'cover', width: '200px', height: "200px" }} />
-            <button onClick={() => remove(index)} >Remove</button>
+        <div style={column}>
+            <img src={src} alt={index} style={{ objectFit: 'cover' }} />
+            <button onClick={onRemove} style={{alignItems: 'end'}}>Remove</button>
         </div>
     )
 }
@@ -12,6 +18,10 @@ export const Image = ({ src, index, remove = f => f }) => {
 const column = {
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     padding: '5px',
-  }
+    width: '200px',
+    height: '200px',
+    border: '1px solid gray',
+    margin: '0px 5px'
+}

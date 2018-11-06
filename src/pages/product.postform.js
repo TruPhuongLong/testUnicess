@@ -2,20 +2,24 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Image } from '../components/Image';
+import { postProduct } from '../service/product.service';
 
 class ProductPostForm extends React.Component {
 
     state = {
-        content: '',
         files: [],
-        imagePreviewUrls: []
+        imageUrls: []
     }
 
-    _onChange = (event) => {
-        const content = event.target.value;
+    resetState = () => {
         this.setState({
-            content
+            files: [],
+            imageUrls: []
         })
+        this.name.value = '';
+        this.price.value = '';
+        this.unitPrice.value = '';
+        this.content.value = '';
     }
 
     onFileChange = (event) => {
@@ -26,17 +30,14 @@ class ProductPostForm extends React.Component {
         })
     }
 
-    onSubmit(event) {
+    onSubmit = (event) => {
         event.preventDefault();
-        const { files, content } = this.state;
-        const { user, postPosts } = this.props;
-        postPosts(user, { content }, files)
+        console.log('submit')
+        const model = { name: this.name.value, price: this.price.value, unitPrice: this.unitPrice.value, content: this.content.value }
+        // const { user, postPosts } = this.props;
+        postProduct(model, this.state.files)
             .then(_ => {
-                this.setState({
-                    content: '',
-                    files: [],
-                    imagePreviewUrls: []
-                })
+                this.resetState();
             })
     }
 
@@ -44,7 +45,7 @@ class ProductPostForm extends React.Component {
         const reader = new FileReader();
         reader.onloadend = () => {
             this.setState({
-                imagePreviewUrls: [...this.state.imagePreviewUrls, reader.result]
+                imageUrls: [...this.state.imageUrls, reader.result]
             });
         }
         reader.readAsDataURL(file)
@@ -52,11 +53,11 @@ class ProductPostForm extends React.Component {
 
     _remove = (index) => {
         console.log(index);
-        const files = this.state.files.filter((_, _index) => _index != index);
-        const imagePreviewUrls = this.state.imagePreviewUrls.filter((_, _index) => _index != index);
+        const files = this.state.files.filter((_, _index) => _index !== index);
+        const imageUrls = this.state.imageUrls.filter((_, _index) => _index !== index);
         this.setState({
             files,
-            imagePreviewUrls,
+            imageUrls,
         })
     }
 
@@ -64,33 +65,50 @@ class ProductPostForm extends React.Component {
         const { listImage } = this.state;
         return (
             <div className="container">
-                <form className="form-horizontal">
+                <form className="form-horizontal" onSubmit={this.onSubmit}>
 
                     <div className="form-group">
                         <label htmlFor="product-name" className="col-sm-2">Name</label>
                         <div className="col-sm-10">
-                            <input id="product-name" className="form-control" />
+                            <input
+                                id="product-name"
+                                className="form-control"
+                                ref={input => this.name = input}
+                            />
                         </div>
                     </div>
 
                     <div className="form-group">
                         <label htmlFor="product-price" className="col-sm-2">Price</label>
                         <div className="col-sm-10">
-                            <input className="form-control" id="product-price" />
+                            <input
+                                className="form-control"
+                                id="product-price"
+                                ref={input => this.price = input}
+                            />
                         </div>
                     </div>
 
                     <div className="form-group">
                         <label htmlFor="product-unit-price" className="col-sm-2">Unit Price</label>
                         <div className="col-sm-10">
-                            <input className="form-control" id="product-unit-price" />
+                            <input
+                                className="form-control"
+                                id="product-unit-price"
+                                ref={input => this.unitPrice = input}
+                            />
                         </div>
                     </div>
 
                     <div className="form-group">
                         <label htmlFor="product-content" className="col-sm-2">Content</label>
                         <div className="col-sm-10">
-                            <textarea className="form-control" id="product-content" rows="10" />
+                            <textarea
+                                className="form-control"
+                                id="product-content"
+                                rows="10"
+                                ref={input => this.content = input}
+                            />
                         </div>
                     </div>
 
@@ -107,12 +125,18 @@ class ProductPostForm extends React.Component {
                                 />
                             </div>
                         </div>
-                        <div style={inline}>
-                            {
-                                this.state.imagePreviewUrls.map((url, index) => {
-                                    return <Image src={url} index={index} key={index} remove={this._remove} />
-                                })
-                            }
+                    </div>
+
+                    <div className="form-group" style={{ textAlign: 'end' }}>
+
+                        <div className="col-sm-offset-2 col-sm-10" style={{ textAlign: 'start' }}>
+                            <div style={inline}>
+                                {
+                                    this.state.imageUrls.map((url, index) => {
+                                        return <Image src={url} index={index} key={index} remove={this._remove} />
+                                    })
+                                }
+                            </div>
                         </div>
                     </div>
 
@@ -131,9 +155,8 @@ class ProductPostForm extends React.Component {
 const inline = {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'start',
     flexWrap: 'wrap',
-    backgroundColor: 'red'
 }
 
 export default ProductPostForm;
