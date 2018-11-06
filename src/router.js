@@ -7,6 +7,7 @@ import History from './pages/history';
 import ThankYou from './pages/thankyou';
 import Product from './pages/product';
 import Login from './pages/login';
+import ProductPostForm from './pages/product.postform';
 
 export default class Routes extends React.Component {
     render() {
@@ -18,7 +19,8 @@ export default class Routes extends React.Component {
                 <Route path="/history" exact component={History} />
                 <Route path="/thankyou" exact component={ThankYou} />
                 <Route path="/product" exact component={Product} />
-                <Route path="/admin" exact component={Login} />
+                <Route path="/admin/login" exact component={Login} />
+                <Route path="/admin/postproduct" exact component={ProductPostForm} />
             </Switch> 
         )
     }
