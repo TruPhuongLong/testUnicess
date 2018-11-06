@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import {incAction} from '../redux/actions/count.action';
+import { incAction } from '../redux/actions/count.action';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import ProductIngredient from '../components/product-ingredient';
 import ReviewRow from '../components/review-row';
@@ -43,7 +44,7 @@ class Home extends React.Component {
         return (
             <div>
                 <Product />
-                <section class="ingredient">
+                {/* <section class="ingredient">
                     {
                         this.dataProductIngredient.map((item, index) => (
                             <ProductIngredient
@@ -52,6 +53,38 @@ class Home extends React.Component {
                                 content={item.content}
                             />
                         ))
+                    }
+                </section> */}
+
+                <section>
+                    {
+                        this.dataProductIngredient.map((item, index, array) => {
+                            if (index % 3 === 0) {
+                                <div className="row">
+                                    <div className="col-md-4">
+                                        <ProductIngredient
+                                            key={index}
+                                            urlIngredient={array[index].url}
+                                            content={array[index].content}
+                                        />
+                                    </div>
+                                    <div className="col-md-4">
+                                        <ProductIngredient
+                                            key={index}
+                                            urlIngredient={array[index].url}
+                                            content={array[index].content}
+                                        />
+                                    </div>
+                                    <div className="col-md-4">
+                                        <ProductIngredient
+                                            key={index}
+                                            urlIngredient={array[index].url}
+                                            content={array[index].content}
+                                        />
+                                    </div>
+                                </div>
+                            }
+                        })
                     }
                 </section>
 
@@ -87,7 +120,7 @@ const mapStateToProps = (state) => {
 
 function mapDispatchToProps(dispatch) {
     return {
-        
+
     }
 }
 
@@ -96,3 +129,17 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(withRouter(Home));
+
+
+/**
+ * 
+ * .ingredient {
+	width: 100%;
+	text-align: center;
+	display: table;
+	margin-top: 50px;
+}
+.ingredient-img {
+	height: 300px;
+}
+ */
