@@ -5,7 +5,8 @@ import { withRouter } from 'react-router-dom';
 import { incAction } from '../redux/actions/count.action';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import ProductIngredient from '../components/product-ingredient';
+import {ProductIngredientRow} from '../components/product-ingredient-row';
+
 import ReviewRow from '../components/review-row';
 import Product from '../components/product';
 import urlIngredient1 from '../assets/ingredient1.png';
@@ -29,7 +30,9 @@ class Home extends React.Component {
     dataProductIngredient = [
         { url: urlIngredient1, content: 'Chứa hơn 20 loại vitamin. Mang lại sức sống cho dôi mắt mệt mỏi' },
         { url: urlIngredient2, content: 'làm sạch và săn chắc da, đẩy mạnh quá trình tẩy, tết bào chết. Hạn chế tích trữ độc tố, duy trì làn da khỏe mạnh' },
-        { url: urlIngredient3, content: 'Giữ ấm và làm sạch da, thanh lọc độc tố. Vitamin K giúp cải thiện sắc tố da hồng hào' }
+        { url: urlIngredient3, content: '2 Giữ ấm và làm sạch da, thanh lọc độc tố. Vitamin K giúp cải thiện sắc tố da hồng hào' },
+        { url: urlIngredient3, content: '3 Giữ ấm và làm sạch da, thanh lọc độc tố. Vitamin K giúp cải thiện sắc tố da hồng hào' },
+        { url: urlIngredient3, content: '4 Giữ ấm và làm sạch da, thanh lọc độc tố. Vitamin K giúp cải thiện sắc tố da hồng hào' }
     ]
     dataReview = [
         { urlCustomer: urlCustomer1, content: 'Mặt này có nhiều tinh chất lắm luôn. Có các điểm mát xa trên mặt rất hay.', urlVote: urlVote1 },
@@ -39,6 +42,8 @@ class Home extends React.Component {
         { urlCustomer: urlCustomer5, content: 'Mặt này có nhiều tinh chất lắm luôn. Có các điểm mát xa trên mặt rất hay.', urlVote: urlVote5 },
         { urlCustomer: urlCustomer6, content: 'Mặt này có nhiều tinh chất lắm luôn. Có các điểm mát xa trên mặt rất hay.', urlVote: urlVote5 }
     ]
+
+    colsOfIngredientRow = 2;
 
     render() {
         return (
@@ -59,30 +64,8 @@ class Home extends React.Component {
                 <section>
                     {
                         this.dataProductIngredient.map((item, index, array) => {
-                            if (index % 3 === 0) {
-                                <div className="row">
-                                    <div className="col-md-4">
-                                        <ProductIngredient
-                                            key={index}
-                                            urlIngredient={array[index].url}
-                                            content={array[index].content}
-                                        />
-                                    </div>
-                                    <div className="col-md-4">
-                                        <ProductIngredient
-                                            key={index}
-                                            urlIngredient={array[index].url}
-                                            content={array[index].content}
-                                        />
-                                    </div>
-                                    <div className="col-md-4">
-                                        <ProductIngredient
-                                            key={index}
-                                            urlIngredient={array[index].url}
-                                            content={array[index].content}
-                                        />
-                                    </div>
-                                </div>
+                            if (index % this.colsOfIngredientRow === 0) {
+                                return <ProductIngredientRow key={index} cols={this.colsOfIngredientRow} index={index} arrayIngredient={array}/>
                             }
                         })
                     }

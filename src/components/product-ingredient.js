@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import urlIngredient1 from '../assets/ingredient1.png';
-
-const ProductIngredient = (props) => {
+export const ProductIngredient = (props) => {
 
     const styles = {
         image: {
-            height: '300px'
+            height: '300px',
+            objectFit: 'contain'
         },
         content: {
             padding: '20px 10px 75px 10px'
@@ -15,9 +14,9 @@ const ProductIngredient = (props) => {
     }
 
     return (
-        <div >
-            <div style={styles.image}>
-                <img src={props.urlIngredient} alt="" />
+        <div>
+            <div >
+                <img src={props.urlIngredient} alt="" style={styles.image}/>
             </div>
             <p style={styles.content}>{props.content}</p>
         </div>
@@ -29,5 +28,4 @@ ProductIngredient.propTypes = {
     content: PropTypes.string.isRequired 
 }
 
-export default ProductIngredient;
 
