@@ -5,7 +5,8 @@ import { withRouter } from 'react-router-dom';
 import { incAction } from '../redux/actions/count.action';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import {ProductIngredientRow} from '../components/product-ingredient-row';
+import { ProductIngredientRow } from '../components/product-ingredient-row';
+import {ProductModel} from '../models/product.model';
 
 import ReviewRow from '../components/review-row';
 import Product from '../components/product';
@@ -24,6 +25,8 @@ import urlVote3 from '../assets/review_3-09.jpg';
 import urlVote4 from '../assets/review_4-09.jpg';
 import urlVote5 from '../assets/review_5-09.jpg';
 
+import urlProduct from '../assets/img-des.jpg';
+
 
 class Home extends React.Component {
 
@@ -32,7 +35,11 @@ class Home extends React.Component {
         { url: urlIngredient2, content: 'làm sạch và săn chắc da, đẩy mạnh quá trình tẩy, tết bào chết. Hạn chế tích trữ độc tố, duy trì làn da khỏe mạnh' },
         { url: urlIngredient3, content: '2 Giữ ấm và làm sạch da, thanh lọc độc tố. Vitamin K giúp cải thiện sắc tố da hồng hào' },
         { url: urlIngredient3, content: '3 Giữ ấm và làm sạch da, thanh lọc độc tố. Vitamin K giúp cải thiện sắc tố da hồng hào' },
-        { url: urlIngredient3, content: '4 Giữ ấm và làm sạch da, thanh lọc độc tố. Vitamin K giúp cải thiện sắc tố da hồng hào' }
+        { url: urlIngredient3, content: '4 Giữ ấm và làm sạch da, thanh lọc độc tố. Vitamin K giúp cải thiện sắc tố da hồng hào' },
+        { url: urlIngredient3, content: '3 Giữ ấm và làm sạch da, thanh lọc độc tố. Vitamin K giúp cải thiện sắc tố da hồng hào' },
+        { url: urlIngredient3, content: '3 Giữ ấm và làm sạch da, thanh lọc độc tố. Vitamin K giúp cải thiện sắc tố da hồng hào' },
+        { url: urlIngredient3, content: '3 Giữ ấm và làm sạch da, thanh lọc độc tố. Vitamin K giúp cải thiện sắc tố da hồng hào' },
+        { url: urlIngredient3, content: '3 Giữ ấm và làm sạch da, thanh lọc độc tố. Vitamin K giúp cải thiện sắc tố da hồng hào' }
     ]
     dataReview = [
         { urlCustomer: urlCustomer1, content: 'Mặt này có nhiều tinh chất lắm luôn. Có các điểm mát xa trên mặt rất hay.', urlVote: urlVote1 },
@@ -43,29 +50,45 @@ class Home extends React.Component {
         { urlCustomer: urlCustomer6, content: 'Mặt này có nhiều tinh chất lắm luôn. Có các điểm mát xa trên mặt rất hay.', urlVote: urlVote5 }
     ]
 
-    colsOfIngredientRow = 2;
+
+    initProductData = () => {
+        this.productData = new ProductModel();
+        this.productData.nameVietNamese = 'Mat na';
+        this.productData.nameEnglish = 'Numero 5. Vital Mask Pack';
+        this.productData.content = "Chiếc mặt nạ đáp ứng nhu cầu chăm sóc da hằng ngày cho phụ nữ hiện đại. Chỉ với 5 phút massgae - 5 điểm nhấn trên mặt nạ cùng Numero 5 sẽ mang lại hiệu quả tuyệt vời.";
+        this.productData.contentDetail = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis quos dolore doloremque exercitationem accusamus sit dignissimos minima cumque magnam omnis.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis quos dolore doloremque exercitationem accusamus sit dignissimos minima cumque magnam omnis. Suscipit magni odit saepe natus debitis sint distinctio similique velit.";
+        this.productData.imageUrls = [urlProduct]
+    }
+    
+
+    ProductIngredientRowOption = {
+        kindScreen: 'md',
+        cols: 3
+    }
+
+    constructor(props){
+        super(props);
+        this.initProductData();
+    }
 
     render() {
+
         return (
             <div>
-                <Product />
-                {/* <section class="ingredient">
-                    {
-                        this.dataProductIngredient.map((item, index) => (
-                            <ProductIngredient
-                                key={index}
-                                urlIngredient={item.url}
-                                content={item.content}
-                            />
-                        ))
-                    }
-                </section> */}
+                <Product product={this.productData}/>
 
-                <section>
+                <section style={{ margin: 'auto' }}>
                     {
                         this.dataProductIngredient.map((item, index, array) => {
-                            if (index % this.colsOfIngredientRow === 0) {
-                                return <ProductIngredientRow key={index} cols={this.colsOfIngredientRow} index={index} arrayIngredient={array}/>
+                            if (index % this.ProductIngredientRowOption.cols === 0) {
+                                return (
+                                    <ProductIngredientRow
+                                        key={index}
+                                        option={this.ProductIngredientRowOption}
+                                        index={index}
+                                        arrayIngredient={array}
+                                    />
+                                )
                             }
                         })
                     }
