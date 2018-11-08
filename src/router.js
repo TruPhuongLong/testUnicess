@@ -1,13 +1,13 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import Home from './pages/home';
-import Order from './pages/order';
-import History from './pages/history';
-import ThankYou from './pages/thankyou';
-import Product from './pages/product';
-import Login from './pages/login';
-import ProductPostForm from './pages/product.postform';
+import Home from './view/pages/home';
+import Order from './view/pages/order';
+import History from './view/pages/history';
+import ThankYou from './view/pages/thankyou';
+import Product from './view/pages/product';
+import Login from './view/pages/login';
+import ProductPostForm from './view/pages/product.postform';
 
 export default class Routes extends React.Component {
     render() {

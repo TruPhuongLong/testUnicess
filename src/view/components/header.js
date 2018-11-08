@@ -1,10 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import urlLogo from '../assets/Logo.png'
-import urlLogoOfficial from '../assets/LogoOfficial.jpg';
-import urlShopping from '../assets/shopping-bag.svg';
-import urlChoise from '../assets/choices.svg';
+import urlLogo from '../../assets/Logo.png'
+import urlLogoOfficial from '../../assets/LogoOfficial.jpg';
+import urlShopping from '../../assets/shopping-bag.svg';
+import urlChoise from '../../assets/choices.svg';
 
 const Header = () => {
     return (

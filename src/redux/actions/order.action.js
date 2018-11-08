@@ -1,5 +1,5 @@
 import { typeAction } from './type.action';
-import { postOrder } from '../../service/order.service';
+import { postOrder } from '../../services/order.service';
 
 export const setCurrentOrderAction = (model) => {
     return postOrder(model)

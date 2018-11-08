@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { ButtonElipse } from './button-elipse';
+import { ButtonElipse } from './core/button-elipse';
 
-import urlIngredient1 from '../assets/ingredient1.png';
+import urlIngredient1 from '../../assets/ingredient1.png';
 
 const ProductDetail = ({ onShrink = f => f, product = {} }) => {
 	return (

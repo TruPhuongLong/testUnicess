@@ -1,7 +1,7 @@
 import React from 'react';
 
-import urlIconCar from '../assets/Icon_Car.png';
-import urlProduct from '../assets/product.jpg';
+import urlIconCar from '../../assets/Icon_Car.png';
+import urlProduct from '../../assets/product.jpg';
 
 export default class Product extends React.Component {
     render() {
@@ -62,61 +62,7 @@ export default class Product extends React.Component {
                     </div>
                 </section>
                 <p className="p-line"></p>
-                {/* <!-- 		Product-End		 --> */}
-
-                {/* <!-- 		Product		 --> */}
-                {/* <section className="p-contain-product">
-                    <div className="p-info-product">
-                        <div className="p-product-img">
-                            <div className="p-car-freeship">
-                                <img src="./images/Icon_Car.png" alt="" className="p-iconcar" />
-                            </div>
-                            <img src="./images/product.jpg" alt="" className="p-product-1" />
-                        </div>
-                        <div className="p-product-desc">
-                            <div className="p-header-des">
-                                <p>Sản Phẩm</p>
-                                <h3>Numero 5. Vital Mask Pack</h3>
-                            </div>
-                            <div className="p-rating-des">
-                                <div className="p-rating">
-                                    <span className="rating rating-1"><i className="fas fa-star"></i></span>
-                                    <span className="rating rating-1"><i className="fas fa-star"></i></span>
-                                    <span className="rating rating-1"><i className="fas fa-star"></i></span>
-                                    <span className="rating rating-1"><i className="fas fa-star"></i></span>
-                                    <span className="rating rating-1"><i className="fas fa-star"></i></span>
-                                </div>
-                                <div className="p-rating-person"><a href="#">Có 4 đánh giá.</a></div>
-                            </div>
-                            <div className="p-product-howmuch">
-                                <div className="p-price">
-                                    <p>Giá bán: </p>
-                                    <input type="text" value="380000đ" className="price price2" readOnly />
-                                </div>
-                                <div className="p-amount">
-                                    <p>Số lượng: </p>
-                                    <div className="p-choose">
-                                        <button type="button" className="clickSub clickSub2">-</button>
-                                        <input type="text" value="1" className="mount mount2	" />
-                                        <button type="button" className="clickAdd clickAdd2">+</button>
-                                    </div>
-                                </div>
-                                <div className="p-price">
-                                    <p>Thành tiền: </p>
-                                    <input type="text" value="380000đ" className="total total2" readOnly="" />
-                                </div>
-                            </div>
-                            <div className="p-product-button">
-                                <button type="button" ><i className="fas fa-plus"></i>thêm vào giỏ</button>
-                                <button type="button" className="p-buynow"><i className="fas fa-shopping-cart"></i>mua ngay</button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <p className="p-line"></p> */}
-                {/* <!-- 		Product-End		 --> */}
-
-
+  
                 <div className="p-show-popup">
                     <div className="p-bg-opacity">
                         <div className="p-popup">

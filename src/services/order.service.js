@@ -1,4 +1,4 @@
-import {URL_ORDER} from '../lib/constant';
+import {URL_ORDER} from '../libs/constant';
 import {get, post} from './data.service';
 
 export const getOrder = (userEmail) => {

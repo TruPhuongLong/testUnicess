@@ -4,10 +4,15 @@ export const URL_ORDER = BASE_URL + '/order';
 
 export const URL_PRODUCT = BASE_URL + '/product';
 
-// //auth url:
-// export const URL_LOGIN = BASE_URL + '/login';
-// export const URL_SIGNUP = BASE_URL + '/signup';
-// export const URL_LOGOUT = BASE_URL + '/logout';
+//auth url:
+export const URL_LOGIN = BASE_URL + '/login';
+export const URL_SIGNUP = BASE_URL + '/signup';
+export const URL_LOGOUT = BASE_URL + '/logout';
+
+//url admin:
+const URL_ADMIN_BASE = BASE_URL + '/admin';
+export const URL_ADMIN_LOGIN = URL_ADMIN_BASE + '/login';
+export const URL_ADMIN_SIGNUP_WITH_PERMIT = URL_ADMIN_BASE + '/signupWithPermit'
 
 // //user api:
 // export const URL_GET_USERS = BASE_URL_API + '/users';

@@ -1,6 +1,9 @@
 export const typeAction = {
-    INC: 'inc',
-    DEC: 'dec',
+
+    // auth:
+    LOGIN: 'LOGIN',
+    SIGNUP: 'SIGNUP',
+    LOGOUT: 'LOGOUT',
 
     //type for product
     GET_LIST_PRODUCT: 'GET_LIST_PRODUCT',
@@ -14,4 +17,8 @@ export const typeAction = {
     //type for admin
     GET_LIST_CUSTOMER: 'GET_LIST_CUSTOMER',
     GET_LIST_ORDER_OF_INDIVIDUAL_CUSTOMER: 'GET_LIST_ORDER_OF_INDIVIDUAL_CUSTOMER',
+
+    //status
+    ERROR: 'ERROR',
+    SUCCESS: 'SUCCESS'
 }

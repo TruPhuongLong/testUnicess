@@ -2,7 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Image } from '../components/Image';
-import { postProduct } from '../service/product.service';
+import { postProduct } from '../../services/product.service';
 
 class ProductPostForm extends React.Component {
 

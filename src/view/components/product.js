@@ -2,7 +2,7 @@ import React from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import ProductDetail from './product-detail';
-import { ButtonElipse } from './button-elipse';
+import { ButtonElipse } from './core/button-elipse';
 
 
 

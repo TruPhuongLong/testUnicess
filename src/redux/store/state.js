@@ -7,9 +7,12 @@ export const initState = {
         list: [],
         current: {}
     },
-    adminState: {
+    authState: {
         isAuth: false,
-        listCustomer: [],
-        listOrderOfIndividualCustomer: []
+        user: {}
+    },
+    userState: {
+        list: [],
+        current: {}
     }
 }

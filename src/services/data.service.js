@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import {KEY_FILE_UPLOAD} from '../lib/constant';
+import {KEY_FILE_UPLOAD} from '../libs/constant';
 
 export const get = (url) => {
     return axios.get(url)

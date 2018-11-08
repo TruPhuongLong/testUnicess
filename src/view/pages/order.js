@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { setCurrentOrderAction } from '../redux/actions/order.action';
-import {OrderModel} from '../models/order.model';
+import { setCurrentOrderAction } from '../../redux/actions/order.action';
+import {OrderModel} from '../../models/order.model';
 
-import urlIconCar from '../assets/Icon_Car.png';
-import urlProduct from '../assets/product.jpg'
+import urlIconCar from '../../assets/Icon_Car.png';
+import urlProduct from '../../assets/product.jpg'
 
 class Order extends React.Component {
 

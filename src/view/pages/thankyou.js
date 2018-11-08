@@ -1,5 +1,5 @@
 import React from 'react';
-import urlInfomation from '../assets/information.svg'
+import urlInfomation from '../../assets/information.svg'
 
 export default class ThankYou extends React.Component {
     render() {
