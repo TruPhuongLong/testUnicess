@@ -1,30 +1,22 @@
-export const BASE_URL = 'http://localhost:2345/api';
+export const URL_BASE = 'http://localhost:2345/api';
 
-export const URL_ORDER = BASE_URL + '/order';
-
-export const URL_PRODUCT = BASE_URL + '/product';
-
-//auth url:
-export const URL_LOGIN = BASE_URL + '/login';
-export const URL_SIGNUP = BASE_URL + '/signup';
-export const URL_LOGOUT = BASE_URL + '/logout';
+//regular user url:
+export const URL_LOGIN = URL_BASE + '/login';
+export const URL_SIGNUP = URL_BASE + '/signup';
+export const URL_LOGOUT = URL_BASE + '/logout';
 
 //url admin:
-const URL_ADMIN_BASE = BASE_URL + '/admin';
+const URL_ADMIN_BASE = URL_BASE + '/admin'; // this url use for put /userId and delete /userEmail too.
 export const URL_ADMIN_LOGIN = URL_ADMIN_BASE + '/login';
-export const URL_ADMIN_SIGNUP_WITH_PERMIT = URL_ADMIN_BASE + '/signupWithPermit'
+export const URL_ADMIN_SIGNUP_WITH_PERMIT = URL_ADMIN_BASE + '/signupWithPermit';
 
-// //user api:
-// export const URL_GET_USERS = BASE_URL_API + '/users';
+//Product
+export const URL_PRODUCT_BASE = URL_BASE + '/product';
+export const URL_PRODUCTS = URL_PRODUCT_BASE + 's';
 
-// //post api:
-// export const URL_POSTS = BASE_URL_API + '/posts'; // for crud action: get, post, patch, delete
-// export const URL_GET_POSTS_PER_USER = URL_POSTS + '/listposts/'; // need suffix userid
-// export const URL_GET_ALBUMS_PER_UER = URL_POSTS + '/listalbums/'; // need suffix userid
-
-// //comment api:
-// export const URL_COMMENT = BASE_URL_API + '/comments'
-
+//Order:
+export const URL_ORDER_BASE = URL_BASE + '/order';
+export const URL_ORDERS = URL_BASE + 's';
 
 //for upload file:
 // importance: name files must be the same in multer:
@@ -33,3 +25,6 @@ export const KEY_FILE_UPLOAD = 'files';
 
 //access_token:
 export const ACCESS_TOKEN = 'access_token';
+
+//server will get access_token value from key header
+export const HEADER_ACCESS_TOKEN = 'x-access-token';

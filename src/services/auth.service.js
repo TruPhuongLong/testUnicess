@@ -1,20 +1,21 @@
 import { post, get } from './data.service';
-import { URL_GET_USERS, URL_SIGNUP, URL_LOGIN, URL_LOGOUT, ACCESS_TOKEN } from '../libs/constant';
+import { URL_SIGNUP, URL_LOGIN, URL_LOGOUT, ACCESS_TOKEN } from '../libs/constant';
 import { throws, rejects } from 'assert';
 
 export const login = (model) => {
     return post(URL_LOGIN, model)
         .then(res => {
-            const { token, _user } = res;
-            if(token && _user){
+            const { user, token } = res;
+            if(token && user){
                 localStorage.setItem(ACCESS_TOKEN, token);
-                return _user;
+                return user;
             }
         })
         .catch(error => console.log(error));
 }
 
 export const signup = (model) => {
+    // will get user if signup success
     return post(URL_SIGNUP, model);
 }
 
@@ -31,13 +32,3 @@ export const logout = () => {
 // }
 
 
-/**
- * window.localStorage.setItem('token', 'the-long-access-token'
- * 
- set header:
-  headers: {
-      'x-access-token': token
-    }
-
-    or headers.authorization = "Bear token"
- */

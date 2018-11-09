@@ -1,11 +1,11 @@
 import { typeAction } from './type.action';
 import { postOrder } from '../../services/order.service';
 
-export const setCurrentOrderAction = (model) => {
+export const postOrderAction = (model) => {
     return postOrder(model)
         .then(_ => {
             return {
-                type: typeAction.SET_CURRENT_ORDER,
+                type: typeAction.POST_ORDER,
                 payload: model
             }
         })

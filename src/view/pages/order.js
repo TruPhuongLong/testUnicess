@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { setCurrentOrderAction } from '../../redux/actions/order.action';
+import { postOrderAction } from '../../redux/actions/order.action';
 import {OrderModel} from '../../models/order.model';
 
 import urlIconCar from '../../assets/Icon_Car.png';
@@ -15,7 +15,7 @@ class Order extends React.Component {
         console.log('test')
         const newOrder = new OrderModel({});
         newOrder.user = {name: "long dep trai", email: "longbaloca@gmail.com"}
-        this.props.setCurrentOrderAction(newOrder)
+        this.props.postOrderAction(newOrder)
     }
 
     render() {
@@ -116,8 +116,8 @@ const mapStateToProps = (state) => {
 
 function mapDispatchToProps(dispatch) {
     return {
-        setCurrentOrderAction: (model) => {
-            setCurrentOrderAction(model)
+        postOrderAction: (model) => {
+            postOrderAction(model)
                 .then(action => dispatch(action));
         },
     }
