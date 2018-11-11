@@ -22,7 +22,10 @@ const ROLES = {
         primary: 'primary',
         secondary: 'secondary'
     },
-    regular: 'regular',
+    regular: {
+        new: 'new',
+        usually: 'usually',
+    }
 }
 
 
