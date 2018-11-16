@@ -1,77 +1,208 @@
-import React from 'react';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import "./product.css";
 
-import urlIconCar from '../../assets/Icon_Car.png';
-import urlProduct from '../../assets/product.jpg';
-
-export default class Product extends React.Component {
-    render() {
-        return (
-            <div className="product-wr">
-                <div className="p-top-wr">
-                    <div className="p-top">
-                        <div className="p-breadcrum"><a href="#">Breadcreumb/Breadcreumb/Breadcreumb</a></div>
-                    </div>
-                </div>
-                {/* <!-- 		Product		 --> */}
-                <section className="p-contain-product">
-                    <div className="p-info-product">
-                        <div className="p-product-img">
-                            <div className="p-car-freeship">
-                                <img src={urlIconCar} alt="" className="p-iconcar" />
-                            </div>
-                            <img src={urlProduct} alt="" className="p-product-1" />
-                        </div>
-                        <div className="p-product-desc">
-                            <div className="p-header-des">
-                                <p>Sản Phẩm</p>
-                                <h3>Numero 5. Vital Mask Pack</h3>
-                            </div>
-                            <div className="p-rating-des">
-                                <div className="p-rating">
-                                    <span className="rating rating-1"><i className="fas fa-star"></i></span>
-                                    <span className="rating rating-1"><i className="fas fa-star"></i></span>
-                                    <span className="rating rating-1"><i className="fas fa-star"></i></span>
-                                    <span className="rating rating-1"><i className="fas fa-star"></i></span>
-                                    <span className="rating rating-1"><i className="fas fa-star"></i></span>
-                                </div>
-                                <div className="p-rating-person"><a href="#">Có 4 đánh giá.</a></div>
-                            </div>
-                            <div className="p-product-howmuch">
-                                <div className="p-price">
-                                    <p>Giá bán: </p>
-                                    <input type="text" value="380000đ" className="price" readOnly />
-                                </div>
-                                <div className="p-amount">
-                                    <p>Số lượng: </p>
-                                    <div className="p-choose">
-                                        <button type="button" className="clickSub">-</button>
-                                        <input type="text" value="1" className="mount" />
-                                        <button type="button" className="clickAdd">+</button>
-                                    </div>
-                                </div>
-                                <div className="p-price">
-                                    <p>Thành tiền: </p>
-                                    <input type="text" value="380000đ" className="total" readOnly="" />
-                                </div>
-                            </div>
-                            <div className="p-product-button">
-                                <button type="button" ><i className="fas fa-plus"></i>thêm vào giỏ</button>
-                                <button type="button" className="p-buynow"><i className="fas fa-shopping-cart"></i>mua ngay</button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <p className="p-line"></p>
-  
-                <div className="p-show-popup">
-                    <div className="p-bg-opacity">
-                        <div className="p-popup">
-                            <p>Đã thêm <span className="p-name-product">Numero 5. Vital Mask Pack</span> vào giở hàng</p>
-                            <span className="p-popup-icon"><img src="./images/verified.svg" alt="" /></span>
-                        </div>
-                    </div>
-                </div>
+class Product extends Component {
+  render() {
+    return (
+      <div className="container">
+        <div className="product-wrapper">
+          <div className="row">
+            <div className="col-xs-12 col-sm-12 col-md-12 col-xl-12">
+              <div className="pro-beadcrumb">
+                <ul>
+                  <li>
+                    <a href="#href">
+                      <i className="fas fa-home" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#href">Sản Phẩm</a>
+                  </li>
+                </ul>
+              </div>
             </div>
-        )
-    }
+          </div>
+          {/* Product Numero 5 */}
+          <section className="pro-product">
+            <div className="row">
+              <div className="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+                <div className="pro-product-around">
+                  <div className="pro-product-img">
+                    <img src="assets/images/product.jpg" alt="" />
+                  </div>
+                </div>
+              </div>
+              <div className="col-xs-12 col-xs-offset-0 col-sm-7 col-sm-offset-0 col-md-7 col-lg-7">
+                <div className="pro-product-des">
+                  <h2>Numero 5. Vital Mask</h2>
+                  <div className="pro-product-rate">
+                    <div className="pro-rate-star">
+                      <span>
+                        <i className="fas fa-star" />
+                      </span>
+                      <span>
+                        <i className="fas fa-star" />
+                      </span>
+                      <span>
+                        <i className="fas fa-star" />
+                      </span>
+                      <span>
+                        <i className="fas fa-star" />
+                      </span>
+                      <span>
+                        <i className="fas fa-star" />
+                      </span>
+                    </div>
+                    <div className="pro-rate-detail">
+                      <p>
+                        <a href="#href">Có 4 đánh giá</a>
+                      </p>
+                    </div>
+                  </div>
+                  <div className="pro-howmuch">
+                    <div className="pro-money">
+                      <div className="row">
+                        <div className="col-xs-6 col-sm-6 col-md-6 col-xl-6">
+                          <p>Giá Bán:</p>
+                        </div>
+                        <div className="col-xs-6 col-sm-6 col-md-6 col-xl-6">
+                          <span className="price">70000</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="pro-mount">
+                      <div className="row">
+                        <div className="col-xs-6 col-sm-6 col-md-6 col-xl-6">
+                          <p>Số Lượng:</p>
+                        </div>
+                        <div className="col-xs-6 col-sm-6 col-md-6 col-xl-6">
+                          <div className="pro-choose">
+                            <button type="button"> - </button>
+                            <input type="text" value="1" />
+                            <button type="button"> + </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-xs-12 col-sm-12 col-md-3 col-xl-6 text-center">
+                <button
+                  type="button"
+                  className="btn btn-sm btn-md btn-xl pro-button pro-addcart"
+                >
+                  <i className="fas fa-plus" />
+                  Thêm vào giỏ
+                </button>
+              </div>
+              <div className="col-xs-12 col-sm-12 col-md-3 col-xl-6 text-center">
+                <button
+                  type="button"
+                  className="btn btn-sm btn-md btn-xl pro-button pro-buynow"
+                >
+                  <i className="fas fa-shopping-cart" />
+                  Mua ngay
+                </button>
+              </div>
+            </div>
+          </section>
+          {/* Product Numero 5 End */}
+          {/* Product wrapper */}
+          {/* Product Numero 5 */}
+          <section className="pro-product">
+            <div className="row">
+              <div className="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+                <div className="pro-product-around">
+                  <div className="pro-product-img">
+                    <img src="assets/images/product.jpg" alt="" />
+                  </div>
+                </div>
+              </div>
+              <div className="col-xs-12 col-xs-offset-0 col-sm-7 col-sm-offset-0 col-md-7 col-lg-7">
+                <div className="pro-product-des">
+                  <h2>Numero 5. Vital Mask</h2>
+                  <div className="pro-product-rate">
+                    <div className="pro-rate-star">
+                      <span>
+                        <i className="fas fa-star" />
+                      </span>
+                      <span>
+                        <i className="fas fa-star" />
+                      </span>
+                      <span>
+                        <i className="fas fa-star" />
+                      </span>
+                      <span>
+                        <i className="fas fa-star" />
+                      </span>
+                      <span>
+                        <i className="fas fa-star" />
+                      </span>
+                    </div>
+                    <div className="pro-rate-detail">
+                      <p>
+                        <a href="#href">Có 4 đánh giá</a>
+                      </p>
+                    </div>
+                  </div>
+                  <div className="pro-howmuch">
+                    <div className="pro-money">
+                      <div className="row">
+                        <div className="col-xs-6 col-sm-6 col-md-6 col-xl-6">
+                          <p>Giá Bán:</p>
+                        </div>
+                        <div className="col-xs-6 col-sm-6 col-md-6 col-xl-6">
+                          <span className="price">70000</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="pro-mount">
+                      <div className="row">
+                        <div className="col-xs-6 col-sm-6 col-md-6 col-xl-6">
+                          <p>Số Lượng:</p>
+                        </div>
+                        <div className="col-xs-6 col-sm-6 col-md-6 col-xl-6">
+                          <div className="pro-choose">
+                            <button type="button"> - </button>
+                            <input type="text" value="1" />
+                            <button type="button"> + </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-xs-12 col-sm-12 col-md-3 col-xl-6 text-center">
+                <button
+                  type="button"
+                  className="btn btn-sm btn-md btn-xl pro-button pro-addcart"
+                >
+                  <i className="fas fa-plus" />
+                  Thêm vào giỏ
+                </button>
+              </div>
+              <div className="col-xs-12 col-sm-12 col-md-3 col-xl-6 text-center">
+                <button
+                  type="button"
+                  className="btn btn-sm btn-md btn-xl pro-button pro-buynow"
+                >
+                  <i className="fas fa-shopping-cart" />
+                  Mua ngay
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    );
+  }
 }
+
+function mapStateToProps(state) {
+  return {};
+}
+
+export default connect(mapStateToProps)(Product);

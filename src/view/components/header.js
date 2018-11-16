@@ -1,28 +1,28 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
-import urlLogo from '../../assets/Logo.png'
-import urlLogoOfficial from '../../assets/LogoOfficial.jpg';
-import urlShopping from '../../assets/shopping-bag.svg';
-import urlChoise from '../../assets/choices.svg';
-
-const Header = () => {
+export default class Header extends Component {
+  render() {
     return (
-        <header>
-			<div className="header-wp">
-				<div className="logo-deal">
-					<Link to="/"><img src={urlLogoOfficial} alt=""/></Link>
-				</div>
-				<div className="logo">
-					<img src={urlLogo} alt=""/>
-				</div>
-				<div className="icon-item">
-					<div className="d-item"><img src={urlShopping} alt=""/></div>
-					<div className="d-item"><img src={urlChoise} alt=""/></div>
-				</div>
-				<span></span>
-			</div>
-		</header>
-    )
+      <header>
+        <div className="container">
+          <div className="header-wr">
+            <div className="header-logo">
+              <Link to="/">
+                <img src="/assets/images/logo-deals.png" alt="logo" />
+              </Link>
+            </div>
+            <div className="header-icon">
+              <Link to="/cart">
+                <i className="fas fa-shopping-cart fa-3x" />
+              </Link>
+              <Link to="/history">
+                <i className="fas fa-clipboard-list fa-3x" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </header>
+    );
+  }
 }
-export default Header;

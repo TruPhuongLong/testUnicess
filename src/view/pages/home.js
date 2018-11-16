@@ -1,150 +1,441 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import "./homepage.css";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showDetail: false
+    };
+  }
 
-import { ProductIngredientRow } from '../components/product-ingredient-row';
-import {ProductModel} from '../../models/product.model';
+  toggleShowDetail = () => {
+    const { showDetail } = this.state;
+    this.setState({ showDetail: !showDetail });
+  };
 
-import ReviewRow from '../components/review-row';
-import Product from '../components/product';
-import urlIngredient1 from '../../assets/ingredient1.png';
-import urlIngredient2 from '../../assets/ingredient2.png';
-import urlIngredient3 from '../../assets/ingredient3.png';
-import urlCustomer1 from '../../assets/client1.png';
-import urlCustomer2 from '../../assets/client2.png';
-import urlCustomer3 from '../../assets/client3.png';
-import urlCustomer4 from '../../assets/client4.png';
-import urlCustomer5 from '../../assets/client5.png';
-import urlCustomer6 from '../../assets/client6.png';
-import urlVote1 from '../../assets/review_1-09.jpg';
-import urlVote2 from '../../assets/review_2-09.jpg';
-import urlVote3 from '../../assets/review_3-09.jpg';
-import urlVote4 from '../../assets/review_4-09.jpg';
-import urlVote5 from '../../assets/review_5-09.jpg';
-
-import urlProduct from '../../assets/img-des.jpg';
-
-
-class Home extends React.Component {
-
-    dataProductIngredient = [
-        { url: urlIngredient1, content: 'Chứa hơn 20 loại vitamin. Mang lại sức sống cho dôi mắt mệt mỏi' },
-        { url: urlIngredient2, content: 'làm sạch và săn chắc da, đẩy mạnh quá trình tẩy, tết bào chết. Hạn chế tích trữ độc tố, duy trì làn da khỏe mạnh' },
-        { url: urlIngredient3, content: '2 Giữ ấm và làm sạch da, thanh lọc độc tố. Vitamin K giúp cải thiện sắc tố da hồng hào' },
-        { url: urlIngredient3, content: '3 Giữ ấm và làm sạch da, thanh lọc độc tố. Vitamin K giúp cải thiện sắc tố da hồng hào' },
-        { url: urlIngredient3, content: '4 Giữ ấm và làm sạch da, thanh lọc độc tố. Vitamin K giúp cải thiện sắc tố da hồng hào' },
-        { url: urlIngredient3, content: '3 Giữ ấm và làm sạch da, thanh lọc độc tố. Vitamin K giúp cải thiện sắc tố da hồng hào' },
-        { url: urlIngredient3, content: '3 Giữ ấm và làm sạch da, thanh lọc độc tố. Vitamin K giúp cải thiện sắc tố da hồng hào' },
-        { url: urlIngredient3, content: '3 Giữ ấm và làm sạch da, thanh lọc độc tố. Vitamin K giúp cải thiện sắc tố da hồng hào' },
-        { url: urlIngredient3, content: '3 Giữ ấm và làm sạch da, thanh lọc độc tố. Vitamin K giúp cải thiện sắc tố da hồng hào' }
-    ]
-    dataReview = [
-        { urlCustomer: urlCustomer1, content: 'Mặt này có nhiều tinh chất lắm luôn. Có các điểm mát xa trên mặt rất hay.', urlVote: urlVote1 },
-        { urlCustomer: urlCustomer2, content: 'Mặt này có nhiều tinh chất lắm luôn. Có các điểm mát xa trên mặt rất hay.', urlVote: urlVote2 },
-        { urlCustomer: urlCustomer3, content: 'Mặt này có nhiều tinh chất lắm luôn. Có các điểm mát xa trên mặt rất hay.', urlVote: urlVote3 },
-        { urlCustomer: urlCustomer4, content: 'Mặt này có nhiều tinh chất lắm luôn. Có các điểm mát xa trên mặt rất hay.', urlVote: urlVote4 },
-        { urlCustomer: urlCustomer5, content: 'Mặt này có nhiều tinh chất lắm luôn. Có các điểm mát xa trên mặt rất hay.', urlVote: urlVote5 },
-        { urlCustomer: urlCustomer6, content: 'Mặt này có nhiều tinh chất lắm luôn. Có các điểm mát xa trên mặt rất hay.', urlVote: urlVote5 }
-    ]
-
-
-    initProductData = () => {
-        this.productData = new ProductModel();
-        this.productData.nameVietNamese = 'Mat na';
-        this.productData.nameEnglish = 'Numero 5. Vital Mask Pack';
-        this.productData.content = "Chiếc mặt nạ đáp ứng nhu cầu chăm sóc da hằng ngày cho phụ nữ hiện đại. Chỉ với 5 phút massgae - 5 điểm nhấn trên mặt nạ cùng Numero 5 sẽ mang lại hiệu quả tuyệt vời.";
-        this.productData.contentDetail = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis quos dolore doloremque exercitationem accusamus sit dignissimos minima cumque magnam omnis.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis quos dolore doloremque exercitationem accusamus sit dignissimos minima cumque magnam omnis. Suscipit magni odit saepe natus debitis sint distinctio similique velit.";
-        this.productData.imageUrls = [urlProduct]
-    }
-    
-
-    ProductIngredientRowOption = {
-        kindScreen: 'md',
-        cols: 3
-    }
-
-    constructor(props){
-        super(props);
-        this.initProductData();
-    }
-
-    render() {
-
-        return (
-            <div>
-                <Product product={this.productData}/>
-
-                <section style={{ margin: 'auto' }}>
-                    {
-                        this.dataProductIngredient.map((item, index, array) => {
-                            if (index % this.ProductIngredientRowOption.cols === 0) {
-                                return (
-                                    <ProductIngredientRow
-                                        key={index}
-                                        option={this.ProductIngredientRowOption}
-                                        index={index}
-                                        arrayIngredient={array}
-                                    />
-                                )
-                            }
-                        })
-                    }
-                </section>
-
-                <section className="review">
-                    <div className="header-review">
-                        <span></span>
-                        <h3>Review</h3>
-                    </div>
-                    <div class="contain-review">
-                        {
-                            this.dataReview.map((item, index, array) => {
-                                if (index % 2 === 0) {
-                                    return <ReviewRow key={index} data={[array[index], array[index + 1]]} />
-                                }
-                            })
-                        }
-                    </div>
-                </section>
+  render() {
+    const { showDetail } = this.state;
+    return (
+      <div className="homepage-wr">
+        {/* Popup */}
+        {/* Popup End */}
+        <div className="container">
+          <div className="home-popup" data-popup="home-popup">
+            <div className="home-popup-cart">
+              <h2>Giỏ hàng trống</h2>
+              <i className="fas fa-info-circle" />
+              <a href="#href" data-popup-close="home-popup-cart">
+                <img src="icon/cancel-music.svg" alt="" />
+              </a>
             </div>
-        )
-    }
+            <div className="home-input-info">
+              <h2>Nhập mail/số điện thoại đặt hàng:</h2>
+              <input type="text" />
+              <button type="button">xác nhận</button>
+              <a href="#href" data-popup-close="home-input-info">
+                <img src="icon/cancel-music.svg" alt="" />
+              </a>
+            </div>
+          </div>
+          <section className="home-intro">
+            <div className="row">
+              <div className="col-sm-8 col-md-6 text-left">
+                <div className="home-title-product">
+                  <h2>
+                    NUMERO 5. <br />
+                    VITAL MASK PACK
+                  </h2>
+                  <span />
+                </div>
+              </div>
+              <div className="col-xs-12 col-sm-12 col-md-6">
+                {/* img product */}
+                <div className="home-img-product">
+                  <div className="home-around-img">
+                    <img
+                      src="/assets/images/product.jpg"
+                      alt=""
+                      style={{ width: "100%" }}
+                    />
+                  </div>
+                </div>
+                {/* img product */}
+              </div>
+              <div className="col-xs-12 col-sm-12 col-md-6 home-description-pc">
+                {/* description */}
+                <div className="home-des-product">
+                  <div className="home-cntn-product">
+                    <p>
+                      Chiếc mặt nạ đáp ứng nhu cầu chăm sóc da hằng ngày cho phụ
+                      nữ hiện đại.
+                    </p>
+                    <p>
+                      Chỉ với 5 phút massage - 5 điểm nhấn trên mặt nạcung
+                      numero 5 sẽ mang lại hiệu quả tuyệt vời.
+                    </p>
+                  </div>
+                  <div className="col-sm-12 text-center">
+                    <div className="home-btn">
+                      <button
+                        type="button"
+                        className="home-btn-detail"
+                        onClick={this.toggleShowDetail}
+                      >
+                        {showDetail ? "Hien chi tiet" : "An chi tiet"}
+                      </button>
+                      <Link to="/product" className="home-btn-product">
+                        Mua ngay
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+                {/* description end */}
+              </div>
+            </div>
+          </section>
+          {showDetail && (
+            <section className="home-intro-detail">
+              <div className="row">
+                <div className="col-xs-12 col-sm-12 col-md-6 col-xl-6">
+                  <div className="home-video-intro">
+                    <div className="home-video-around">
+                      <video width="100%" height="400px">
+                        <source
+                          src="https://www.youtube.com/watch?v=jeETvevBbyQ"
+                          type="video/mp4"
+                        />
+                        <source
+                          src="https://www.youtube.com/watch?v=jeETvevBbyQ"
+                          type="video/ogg"
+                        />
+                      </video>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-xs-12 col-sm-12 col-md-6 col-xl-6">
+                  <div className="home-text-video">
+                    <h2>Type something</h2>
+                    <ul>
+                      <li>
+                        Chiếc mặt nạ đáp ứng nhu cầu chắm sóc da hằng ngày cho
+                        phụ nữ hiện đại
+                      </li>
+                      <li>
+                        Chỉ với 5 phút massage - 5 điểm nhấn trên mặt nạ cùng
+                        Numero 5 sẽ mang lại hiệu quả tuyệt vời.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </section>
+          )}
+          <section className="home-element">
+            <div className="row">
+              <div className="col-xs-12 col-sm-12">
+                <div className="home-title-element">
+                  <div className="home-around-title">
+                    <span />
+                    <p>Thành phần</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="home-element-cntn">
+              <div className="row">
+                <div className="col-xs-12 col-sm-12 col-md-4 col-xl-4">
+                  <div className="home-element-item">
+                    <div className="col-xs-6 col-sm-6 col-md-12">
+                      <div className="home-element-title">
+                        <h3>
+                          Tảo lục <br />
+                          Chlorella
+                        </h3>
+                        <span>
+                          <i className="fas fa-ellipsis-h" />
+                        </span>
+                      </div>
+                    </div>
+                    <div className="col-sm-6 col-xs-6 col-md-12 col-xl-12">
+                      <div className="home-element-product">
+                        <img src="/assets/images/Asset2-8.png" alt="" />
+                      </div>
+                    </div>
+                    <p className="col-xs-6 col-sm-6 col-md-12 col-xl-12  ">
+                      Chứa hơn 20 loại Vitamin mang lại sức sống cho đổi mắt mệt
+                      mỏi
+                    </p>
+                  </div>
+                </div>
+                <div className="col-xs-12 col-sm-12 col-md-4 col-xl-4">
+                  <div className="home-element-item">
+                    <div className="col-xs-6 col-sm-6 col-xs-push-6 col-sm-push-6 col-md-12 col-md-push-0">
+                      <div className="home-element-title">
+                        <h3>
+                          Hoa vô thường <br />
+                          Hibiscus
+                        </h3>
+                        <span>
+                          <i className="fas fa-ellipsis-h" />
+                        </span>
+                      </div>
+                    </div>
+                    <div className="col-sm-6 col-xs-6 col-sm-pull-6 col-xs-pull-6 col-md-12 col-xl-12 col-md-pull-0 col-xl-pull-0">
+                      <div className="home-element-product">
+                        <img src="/assets/images/Asset3-8.png" alt="" />
+                      </div>
+                    </div>
+                    <p className="col-xs-6 col-sm-6 col-xs-push-6 col-sm-push-6 col-md-12 col-xl-12 col-md-push-0 col-xl-push-0 ">
+                      Làm sạch và săn chắc da thông qua tẩy tế bào chết
+                    </p>
+                  </div>
+                </div>
+                <div className="col-xs-12 col-sm-12 col-md-4 col-xl-4">
+                  <div className="home-element-item">
+                    <div className="col-xs-6 col-sm-6 col-md-12">
+                      <div className="home-element-title">
+                        <h3>
+                          Cải xoăn <br />
+                          Kale
+                        </h3>
+                        <span>
+                          <i className="fas fa-ellipsis-h" />
+                        </span>
+                      </div>
+                    </div>
+                    <div className="col-sm-6 col-xs-6 col-md-12 col-xl-12">
+                      <div className="home-element-product">
+                        <img src="/assets/images/Asset4-8.png" alt="" />
+                      </div>
+                    </div>
+                    <p className="col-xs-6 col-sm-6 col-md-12 col-xl-12 ">
+                      Giữ ấm và làm sạch da, thanh lọc và đẩy độc tố ra khỏi cơ
+                      thể.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section className="home-review">
+            <div className="row">
+              <div className="col-xs-12 col-sm-12">
+                <div className="home-title-review">
+                  <div className="home-around-review">
+                    <span />
+                    <p>Review</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="home-review-cntn">
+              {/* review loop */}
+              <div className="row">
+                <div className="col-md-12 col-xl-12">
+                  <div className="home-review-around">
+                    <div className="col-xs-12 col-sm-12 col-md-6 col-xl-6">
+                      {/* review left */}
+                      <div className="home-review-left">
+                        <div className="home-review-client">
+                          {/* avt */}
+                          <div className="home-review-avt">
+                            <div className="home-review-img">
+                              <img src="/assets/images/client1.png" alt="" />
+                            </div>
+                          </div>
+                          {/* avt end */}
+                          <div className="home-review-content">
+                            <div className="home-review-rate">
+                              <img
+                                src="/assets/images/review_1-09.jpg"
+                                alt=""
+                              />
+                            </div>
+                            <div className="home-review-main">
+                              <p>
+                                Mặt nạ này có nhiều tinh chất lắm luôn. <br />
+                                Có các điểm massage trên mặt rất hay.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {/* review left end */}
+                    </div>
+                    <div className="col-xs-12 col-sm-12 col-md-6 col-xl-6">
+                      {/* review right */}
+                      <div className="home-review-left">
+                        <div className="home-review-client">
+                          {/* avt */}
+                          <div className="home-review-avt">
+                            <div className="home-review-img">
+                              <img src="/assets/images/client6.png" alt="" />
+                            </div>
+                          </div>
+                          {/* avt end */}
+                          <div className="home-review-content">
+                            <div className="home-review-rate">
+                              <img
+                                src="/assets/images/review_2-09.jpg"
+                                alt=""
+                              />
+                            </div>
+                            <div className="home-review-main">
+                              <p>
+                                Mặt nạ này có nhiều tinh chất lắm luôn. <br />
+                                Có các điểm massage trên mặt rất hay.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {/* review right end */}
+                </div>
+                {/* review loop end */}
+                {/* review loop */}
+                <div className="col-md-12 col-xl-12">
+                  <div className="home-review-around">
+                    <div className="col-xs-12 col-sm-12 col-md-6 col-xl-6">
+                      {/* review left */}
+                      <div className="home-review-left">
+                        <div className="home-review-client">
+                          {/* avt */}
+                          <div className="home-review-avt">
+                            <div className="home-review-img">
+                              <img src="/assets/images/client1.png" alt="" />
+                            </div>
+                          </div>
+                          {/* avt end */}
+                          <div className="home-review-content">
+                            <div className="home-review-rate">
+                              <img
+                                src="/assets/images/review_1-09.jpg"
+                                alt=""
+                              />
+                            </div>
+                            <div className="home-review-main">
+                              <p>
+                                Mặt nạ này có nhiều tinh chất lắm luôn. <br />
+                                Có các điểm massage trên mặt rất hay.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {/* review left end */}
+                    </div>
+                    <div className="col-xs-12 col-sm-12 col-md-6 col-xl-6">
+                      {/* review right */}
+                      <div className="home-review-left">
+                        <div className="home-review-client">
+                          {/* avt */}
+                          <div className="home-review-avt">
+                            <div className="home-review-img">
+                              <img src="/assets/images/client6.png" alt="" />
+                            </div>
+                          </div>
+                          {/* avt end */}
+                          <div className="home-review-content">
+                            <div className="home-review-rate">
+                              <img
+                                src="/assets/images/review_2-09.jpg"
+                                alt=""
+                              />
+                            </div>
+                            <div className="home-review-main">
+                              <p>
+                                Mặt nạ này có nhiều tinh chất lắm luôn. <br />
+                                Có các điểm massage trên mặt rất hay.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {/* review right end */}
+                </div>
+                {/* review loop end */}
+                {/* review loop */}
+                <div className="col-md-12 col-xl-12">
+                  <div className="home-review-around">
+                    <div className="col-xs-12 col-sm-12 col-md-6 col-xl-6">
+                      {/* review left */}
+                      <div className="home-review-left">
+                        <div className="home-review-client">
+                          {/* avt */}
+                          <div className="home-review-avt">
+                            <div className="home-review-img">
+                              <img src="/assets/images/client1.png" alt="" />
+                            </div>
+                          </div>
+                          {/* avt end */}
+                          <div className="home-review-content">
+                            <div className="home-review-rate">
+                              <img
+                                src="/assets/images/review_1-09.jpg"
+                                alt=""
+                              />
+                            </div>
+                            <div className="home-review-main">
+                              <p>
+                                Mặt nạ này có nhiều tinh chất lắm luôn. <br />
+                                Có các điểm massage trên mặt rất hay.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {/* review left end */}
+                    </div>
+                    <div className="col-xs-12 col-sm-12 col-md-6 col-xl-6">
+                      {/* review right */}
+                      <div className="home-review-left">
+                        <div className="home-review-client">
+                          {/* avt */}
+                          <div className="home-review-avt">
+                            <div className="home-review-img">
+                              <img src="/assets/images/client6.png" alt="" />
+                            </div>
+                          </div>
+                          {/* avt end */}
+                          <div className="home-review-content">
+                            <div className="home-review-rate">
+                              <img
+                                src="/assets/images/review_2-09.jpg"
+                                alt=""
+                              />
+                            </div>
+                            <div className="home-review-main">
+                              <p>
+                                Mặt nạ này có nhiều tinh chất lắm luôn. <br />
+                                Có các điểm massage trên mặt rất hay.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {/* review right end */}
+                </div>
+              </div>
+              {/* review loop end */}
+            </div>
+          </section>
+        </div>
+      </div>
+    );
+  }
 }
 
-
-
-
-const mapStateToProps = (state) => {
-    // console.log(state)
-    // console.log(n);
-    return {
-    }
+function mapStateToProps(state) {
+  return {};
 }
 
-function mapDispatchToProps(dispatch) {
-    return {
-
-    }
-}
-
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(withRouter(Home));
-
-
-/**
- * 
- * .ingredient {
-	width: 100%;
-	text-align: center;
-	display: table;
-	margin-top: 50px;
-}
-.ingredient-img {
-	height: 300px;
-}
- */
+export default connect(mapStateToProps)(Home);
