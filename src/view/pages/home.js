@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import "./homepage.css";
+import Review from "../components/review";
+import reviewDatas from "../../data/reviews";
 
 class Home extends Component {
   constructor(props) {
@@ -14,6 +16,12 @@ class Home extends Component {
   toggleShowDetail = () => {
     const { showDetail } = this.state;
     this.setState({ showDetail: !showDetail });
+  };
+
+  reviewElements = reviewDatas => {
+    return reviewDatas.map((review, index) => {
+      return <Review key={index} review={review} />;
+    });
   };
 
   render() {
@@ -233,197 +241,8 @@ class Home extends Component {
             </div>
             <div className="home-review-cntn">
               {/* review loop */}
-              <div className="row">
-                <div className="col-md-12 col-xl-12">
-                  <div className="home-review-around">
-                    <div className="col-xs-12 col-sm-12 col-md-6 col-xl-6">
-                      {/* review left */}
-                      <div className="home-review-left">
-                        <div className="home-review-client">
-                          {/* avt */}
-                          <div className="home-review-avt">
-                            <div className="home-review-img">
-                              <img src="/assets/images/client1.png" alt="" />
-                            </div>
-                          </div>
-                          {/* avt end */}
-                          <div className="home-review-content">
-                            <div className="home-review-rate">
-                              <img
-                                src="/assets/images/review_1-09.jpg"
-                                alt=""
-                              />
-                            </div>
-                            <div className="home-review-main">
-                              <p>
-                                Mặt nạ này có nhiều tinh chất lắm luôn. <br />
-                                Có các điểm massage trên mặt rất hay.
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      {/* review left end */}
-                    </div>
-                    <div className="col-xs-12 col-sm-12 col-md-6 col-xl-6">
-                      {/* review right */}
-                      <div className="home-review-left">
-                        <div className="home-review-client">
-                          {/* avt */}
-                          <div className="home-review-avt">
-                            <div className="home-review-img">
-                              <img src="/assets/images/client6.png" alt="" />
-                            </div>
-                          </div>
-                          {/* avt end */}
-                          <div className="home-review-content">
-                            <div className="home-review-rate">
-                              <img
-                                src="/assets/images/review_2-09.jpg"
-                                alt=""
-                              />
-                            </div>
-                            <div className="home-review-main">
-                              <p>
-                                Mặt nạ này có nhiều tinh chất lắm luôn. <br />
-                                Có các điểm massage trên mặt rất hay.
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  {/* review right end */}
-                </div>
-                {/* review loop end */}
-                {/* review loop */}
-                <div className="col-md-12 col-xl-12">
-                  <div className="home-review-around">
-                    <div className="col-xs-12 col-sm-12 col-md-6 col-xl-6">
-                      {/* review left */}
-                      <div className="home-review-left">
-                        <div className="home-review-client">
-                          {/* avt */}
-                          <div className="home-review-avt">
-                            <div className="home-review-img">
-                              <img src="/assets/images/client1.png" alt="" />
-                            </div>
-                          </div>
-                          {/* avt end */}
-                          <div className="home-review-content">
-                            <div className="home-review-rate">
-                              <img
-                                src="/assets/images/review_1-09.jpg"
-                                alt=""
-                              />
-                            </div>
-                            <div className="home-review-main">
-                              <p>
-                                Mặt nạ này có nhiều tinh chất lắm luôn. <br />
-                                Có các điểm massage trên mặt rất hay.
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      {/* review left end */}
-                    </div>
-                    <div className="col-xs-12 col-sm-12 col-md-6 col-xl-6">
-                      {/* review right */}
-                      <div className="home-review-left">
-                        <div className="home-review-client">
-                          {/* avt */}
-                          <div className="home-review-avt">
-                            <div className="home-review-img">
-                              <img src="/assets/images/client6.png" alt="" />
-                            </div>
-                          </div>
-                          {/* avt end */}
-                          <div className="home-review-content">
-                            <div className="home-review-rate">
-                              <img
-                                src="/assets/images/review_2-09.jpg"
-                                alt=""
-                              />
-                            </div>
-                            <div className="home-review-main">
-                              <p>
-                                Mặt nạ này có nhiều tinh chất lắm luôn. <br />
-                                Có các điểm massage trên mặt rất hay.
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  {/* review right end */}
-                </div>
-                {/* review loop end */}
-                {/* review loop */}
-                <div className="col-md-12 col-xl-12">
-                  <div className="home-review-around">
-                    <div className="col-xs-12 col-sm-12 col-md-6 col-xl-6">
-                      {/* review left */}
-                      <div className="home-review-left">
-                        <div className="home-review-client">
-                          {/* avt */}
-                          <div className="home-review-avt">
-                            <div className="home-review-img">
-                              <img src="/assets/images/client1.png" alt="" />
-                            </div>
-                          </div>
-                          {/* avt end */}
-                          <div className="home-review-content">
-                            <div className="home-review-rate">
-                              <img
-                                src="/assets/images/review_1-09.jpg"
-                                alt=""
-                              />
-                            </div>
-                            <div className="home-review-main">
-                              <p>
-                                Mặt nạ này có nhiều tinh chất lắm luôn. <br />
-                                Có các điểm massage trên mặt rất hay.
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      {/* review left end */}
-                    </div>
-                    <div className="col-xs-12 col-sm-12 col-md-6 col-xl-6">
-                      {/* review right */}
-                      <div className="home-review-left">
-                        <div className="home-review-client">
-                          {/* avt */}
-                          <div className="home-review-avt">
-                            <div className="home-review-img">
-                              <img src="/assets/images/client6.png" alt="" />
-                            </div>
-                          </div>
-                          {/* avt end */}
-                          <div className="home-review-content">
-                            <div className="home-review-rate">
-                              <img
-                                src="/assets/images/review_2-09.jpg"
-                                alt=""
-                              />
-                            </div>
-                            <div className="home-review-main">
-                              <p>
-                                Mặt nạ này có nhiều tinh chất lắm luôn. <br />
-                                Có các điểm massage trên mặt rất hay.
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  {/* review right end */}
-                </div>
+              <div className="row make-columns">
+                {this.reviewElements(reviewDatas)}
               </div>
               {/* review loop end */}
             </div>
